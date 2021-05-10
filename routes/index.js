@@ -6,10 +6,13 @@ const axios = require('axios');
 router.get('/', function(req, res, next) {
   const url = 'https://raw.githubusercontent.com/hexschool/js-training-task/master/api/BigFive.json';
   axios.get(url)
-    .then((res) => {
-      console.log(res.data)
+    .then((response) => {
+      console.log(response.data)
+      res.render('index', {
+        title: response.data.name.zh,
+        description: response.data.description
+      });
     })
-  res.render('index', { title: 'Express' });
 });
 
 module.exports = router;
