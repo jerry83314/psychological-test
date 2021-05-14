@@ -73,7 +73,21 @@ router.get('/02', function(req, res) {
 });
 
 router.get('/03', function(req, res) {
-  res.render('question03')
+  getData('extroversion', 0).then(() => {
+    res.render('question03', {
+      title: problemTitle,
+      option: option
+    });
+  })
+});
+
+router.get('/04', function(req, res) {
+  getData('extroversion', 1).then(() => {
+    res.render('question04', {
+      title: problemTitle,
+      option: option
+    });
+  })
 });
 
 module.exports = router;
