@@ -90,4 +90,58 @@ router.get('/04', function(req, res) {
   })
 });
 
+router.get('/05', function(req, res) {
+  getData('openness', 0).then(() => {
+    res.render('question05', {
+      title: problemTitle,
+      option: option
+    });
+  })
+});
+
+router.get('/06', function(req, res) {
+  getData('openness', 1).then(() => {
+    res.render('question06', {
+      title: problemTitle,
+      option: option
+    });
+  })
+});
+
+router.get('/07', function(req, res) {
+  getData('agreeableness', 0).then(() => {
+    res.render('question07', {
+      title: problemTitle,
+      option: option
+    });
+  })
+});
+
+router.get('/08', function(req, res) {
+  getData('agreeableness', 1).then(() => {
+    res.render('question08', {
+      title: problemTitle,
+      option: option
+    });
+  })
+});
+
+router.get('/09', function(req, res) {
+  getData('conscientiousness', 0).then(() => {
+    res.render('question09', {
+      title: problemTitle,
+      option: option
+    });
+  })
+});
+
+router.get('/10', function(req, res) {
+  getData('conscientiousness', 1).then(() => {
+    res.render('question10', {
+      title: problemTitle,
+      option: option
+    });
+  })
+});
+
 module.exports = router;
