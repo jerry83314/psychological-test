@@ -30,8 +30,22 @@ function getData(category, key) {
 // 接分數的 api
 router.post('/addScore', function(req, res) {
   console.log(req.body)
-  if(req.body.category === 'neuroticism') {
-    score.neuroticism.push(req.body.score)
+  switch(req.body.category) {
+    case 'neuroticism':
+      score.neuroticism.push(req.body.score)
+      break;
+    case 'extroversion':
+      score.extroversion.push(req.body.score)
+      break;
+    case 'openness':
+      score.openness.push(req.body.score)
+      break;
+    case 'agreeableness':
+      score.agreeableness.push(req.body.score)
+      break;
+    case 'conscientiousness':
+      score.conscientiousness.push(req.body.score)
+      break;
   }
   res.send({
     success: true,
