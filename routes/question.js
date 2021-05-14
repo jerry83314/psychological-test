@@ -7,7 +7,11 @@ let problemList = {};
 let problemTitle = '';
 let option = [];
 let score = {
-  neuroticism: []
+  neuroticism: [],
+  extroversion: [],
+  openness: [],
+  agreeableness: [],
+  conscientiousness: []
 };
 
 function getData(category, key) {
