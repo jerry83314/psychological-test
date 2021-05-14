@@ -36,8 +36,8 @@
 
     xhr.send(JSON.stringify(data));
     xhr.onload = function () {
-      console.log(xhr.responseText)
+      console.log(xhr.responseText);
+      location.href = '/question/02';
     }
-    location.href = '/question/02';
   });
 </script>
