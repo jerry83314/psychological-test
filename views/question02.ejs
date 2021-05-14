@@ -9,7 +9,7 @@
   </label>
 </div>
 <% } %>
-<a href="/question/03" class="btn btn-primary" id="send">下一題</a>
+<a href="#" class="btn btn-primary" id="send">下一題</a>
 
 <script>
   const send = document.querySelector('#send');
@@ -17,7 +17,7 @@
   
   send.addEventListener('click', function (e) {
     e.preventDefault();
-    
+
     const xhr = new XMLHttpRequest();
     xhr.open('post', '/question/addScore');
     xhr.setRequestHeader('Content-type', 'application/json');
@@ -37,8 +37,17 @@
 
     xhr.send(JSON.stringify(data));
     xhr.onload = function () {
-      console.log(xhr.responseText)
+      // const data = JSON.parse(xhr.responseText);
+      // if(data.success === true) {
+      //   const xhr = new XMLHttpRequest();
+      //   xhr.open('get', '/question/getScore');
+      //   xhr.send();
+      //   xhr.onload = function () {
+      //     const data = JSON.parse(xhr.responseText);
+      //     console.log(data.content);
+      //   }
+      // }
     }
-    location.href = '/question/03';
+    // location.href = '/question/03';
   });
 </script>

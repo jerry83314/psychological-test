@@ -36,6 +36,19 @@ router.post('/addScore', function(req, res) {
   console.log(score)
 });
 
+// 最後結算取得分數
+router.get('/getScore', function(req, res) {
+  let number = 0;
+  for(value in score) {
+    let category = score[value];
+    console.log('score', category)
+    for(key in category) {
+      number += parseInt(category[key]);
+    }
+    console.log(number)
+  }
+});
+
 /* GET users listing. */
 router.get('/', function(req, res) {
   res.send('respond with a resource');
