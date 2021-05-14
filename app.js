@@ -3,15 +3,29 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const bodyParser = require('body-parser');
+
 
 var indexRouter = require('./routes/index');
 var questionRouter = require('./routes/question');
 
 var app = express();
 
+// ejs
+const engine = require('ejs-locals');
+app.engine('ejs', engine);
+app.set('views', './views');
+app.set('view engine', 'ejs');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+// body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 app.use(logger('dev'));
 app.use(express.json());

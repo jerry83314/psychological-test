@@ -1,0 +1,44 @@
+<% layout('layout') %>
+<h2><%= title %></h2>
+<% for(item in option) { %>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="options" id="<%= option[item].fraction %>"
+    value="<%= option[item].fraction %>">
+  <label class="form-check-label" for="<%= option[item].fraction %>">
+    <%= option[item].description %>
+  </label>
+</div>
+<% } %>
+<a href="/question/03" class="btn btn-primary" id="send">下一題</a>
+
+<script>
+  const send = document.querySelector('#send');
+  const el = document.getElementsByName('options');
+  
+  send.addEventListener('click', function (e) {
+    e.preventDefault();
+    
+    const xhr = new XMLHttpRequest();
+    xhr.open('post', '/question/addScore');
+    xhr.setRequestHeader('Content-type', 'application/json');
+
+    const data = {
+      category: 'neuroticism',
+      score: ''
+    };
+
+    for (let i = 0; i < el.length; i++) {
+      if (el[i].checked) {
+        const value = el[i].value;
+        data.score = value;
+        break;
+      }
+    }
+
+    xhr.send(JSON.stringify(data));
+    xhr.onload = function () {
+      console.log(xhr.responseText)
+    }
+    location.href = '/question/03';
+  });
+</script>
