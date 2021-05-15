@@ -10,3 +10,34 @@
 </div>
 <% } %>
 <a href="#" class="btn btn-primary" id="send">下一題</a>
+
+<script>
+  const send = document.querySelector('#send');
+  const el = document.getElementsByName('options');
+
+  send.addEventListener('click', function (e) {
+    e.preventDefault();
+    const xhr = new XMLHttpRequest();
+    xhr.open('post', '/question/addScore');
+    xhr.setRequestHeader('Content-type', 'application/json');
+
+    const data = {
+      category: 'agreeableness',
+      score: ''
+    };
+
+    for (let i = 0; i < el.length; i++) {
+      if (el[i].checked) {
+        const value = el[i].value;
+        data.score = value;
+        break;
+      }
+    }
+
+    xhr.send(JSON.stringify(data));
+    xhr.onload = function () {
+      console.log(xhr.responseText);
+      location.href = '/question/08';
+    }
+  });
+</script>
