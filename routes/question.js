@@ -63,7 +63,9 @@ router.get('/getScore', function(req, res) {
     for(key in category) {
       number += parseInt(category[key]);
     }
-    console.log(number)
+    console.log('final', number)
+    number = 0;
+    console.log('restart', number)
   }
 });
 

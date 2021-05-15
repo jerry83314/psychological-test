@@ -37,6 +37,16 @@
     xhr.send(JSON.stringify(data));
     xhr.onload = function () {
       console.log(xhr.responseText);
+      const data = JSON.parse(xhr.responseText);
+      if(data.success === true) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('get', '/question/getScore');
+        xhr.send();
+        xhr.onload = function () {
+          const data = JSON.parse(xhr.responseText);
+          console.log(data.content);
+        }
+      }
     }
   });
 </script>
