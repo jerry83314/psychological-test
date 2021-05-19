@@ -27,6 +27,22 @@ function getData(category, key) {
   })
 }
 
+function getResult(category, score) {
+  const url = 'https://raw.githubusercontent.com/hexschool/js-training-task/master/api/BigFive.json';
+  axios.get(url)
+    .then((res) => {
+      const description = category.description.desc;
+      const result = '';
+      if(score <=5 ) {
+        result = category.description.low;
+      }else if(score > 5 || score <= 7) {
+        result = category.description.middle;
+      }else if(score > 7) {
+        result = category.description.high;
+      }
+    })
+}
+
 // 接分數的 api
 router.post('/addScore', function(req, res) {
   console.log(req.body)
